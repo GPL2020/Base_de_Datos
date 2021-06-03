@@ -27,10 +27,7 @@ def recuperar_puntajes(nombre_archivo):
           [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)].
 """
 
-puntajes = []
-archivo = open(nombre_archivo, "r")
-archivo_csv = csv.reader(archivo)
-for nombre, puntaje, tiempo in archivo_csv:
-    puntajes.append((nombre, int(puntaje), tiempo))
-archivo.close()
-return puntajes
+valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
+puntajes_csv.guardar_puntajes("puntajesCSV.txt", valores)
+ecuperado = puntajes_csv.recuperar_puntajes("puntajesCSV.txt")
+print recuperado
