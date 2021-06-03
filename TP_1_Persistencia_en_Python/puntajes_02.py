@@ -26,8 +26,3 @@ def recuperar_puntajes(nombre_archivo):
     Post: la lista devuelta contiene los puntajes en el formato:
           [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)].
 """
-
-valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
-puntajes_csv.guardar_puntajes("puntajesCSV.txt", valores)
-ecuperado = puntajes_csv.recuperar_puntajes("puntajesCSV.txt")
-print recuperado
