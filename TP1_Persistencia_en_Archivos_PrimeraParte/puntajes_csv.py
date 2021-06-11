@@ -25,4 +25,12 @@ def recuperar_puntajes(nombre_archivo):
          separados por comas
     Post: la lista devuelta contiene los puntajes en el formato:
           [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)].
-"""
+    """
+
+    puntajes = []
+    archivo = open(nombre_archivo, "r")
+    archivo_csv = csv.reader(archivo)
+    for nombre, puntaje, tiempo in archivo_csv:
+        puntajes.append((nombre, int(puntaje), tiempo))
+    archivo.close()
+    return puntajes
