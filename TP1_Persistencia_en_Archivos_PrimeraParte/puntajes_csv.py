@@ -38,5 +38,5 @@ def recuperar_puntajes(nombre_archivo):
 import puntajes_csv                                                     
 valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
 puntajes_csv.guardar_puntajes("puntajes.csv", valores)
-recuperado = puntajes_csv.recuperar_puntajes("puntajes.txt")
-print recuperado
+recuperado = puntajes_csv.recuperar_puntajes("puntajes.csv")
+print (recuperado)
