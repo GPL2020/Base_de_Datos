@@ -1,42 +1,36 @@
-# Código 11.7: puntajes_csv.py: Módulo para guardar y recuperar puntajes en un archivo que usa csv
+# Código 11.8: puntajes_pickle.py: Módulo para guardar y recuperar puntajes en un archivo que usa pickle
 
 #! /usr/bin/env python
 # encoding: utf8
 
-import csv
+import pickle
 
 def guardar_puntajes(nombre_archivo, puntajes):
-    """ Guarda la lista de puntajes en el archivo.
-    Pre: nombre_archivo corresponde a un archivo válido,
-         puntajes corresponde a una lista de secuencias de elementos.
-    Post: se guardaron los valores en el archivo,
-          separados por comas.
-    """
+        """ Guarda la lista de puntajes en el archivo.
+        Pre: nombre_archivo corresponde a un archivo válido,
+            puntajes corresponde a los valores a guardar
+        Post: se guardaron los valores en el archivo en formato pickle.
+        """
 
-    archivo = open(nombre_archivo, "w", mewline = '')
-    archivo_csv = csv.writer(archivo)
-    archivo_csv.writerows(puntajes)
-    archivo.close()
+        archivo = open(nombre_archivo, "wb")
+        pickle.dump(puntajes, archivo)
+        archivo.close()
 
 def recuperar_puntajes(nombre_archivo):
-    """ Recupera los puntajes a partir del archivo provisto.
-        Devuelve una lista con los valores de los puntajes.
-    Pre: el archivo contiene los puntajes en el formato esperado,
-         separados por comas
-    Post: la lista devuelta contiene los puntajes en el formato:
-          [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)].
-    """
+        """ Recupera los puntajes a partir del archivo provisto.
+            Devuelve una lista con los valores de los puntajes.
+        Pre: el archivo contiene los puntajes en formato pickle
+        Post: la lista devuelta contiene los puntajes en el
+            mismo formato que se los almacenó.
+        """
 
-    puntajes = []
-    archivo = open(nombre_archivo, "r")
-    archivo_csv = csv.reader(archivo)
-    for nombre, puntaje, tiempo in archivo_csv:
-        puntajes.append((nombre, int(puntaje), tiempo))
-    archivo.close()
-    return puntajes
+        archivo = open(nombre_archivo, "rb")
+        puntajes = pickle.load(archivo)
+        archivo.close()
+        return puntajes
 
-import puntajes_csv
+
 valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
-puntajes_csv.guardar_puntajes("puntajes.csv", valores)
-recuperado = recuperar_puntajes("puntajes.csv")
+guardar_puntajes("puntajes.dat", valores)
+recuperado = recuperar_puntajes("puntajes.dat")
 print (recuperado)
