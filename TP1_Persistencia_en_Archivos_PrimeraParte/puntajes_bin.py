@@ -13,7 +13,7 @@ def guardar_puntajes(nombre_archivo, puntajes):
           separados por comas.
     """
 
-    archivo = open(nombre_archivo, "w", newline = '')
+    archivo = open(nombre_archivo, "w", mewline = '')
     archivo_csv = csv.writer(archivo)
     archivo_csv.writerows(puntajes)
     archivo.close()
@@ -35,7 +35,8 @@ def recuperar_puntajes(nombre_archivo):
     archivo.close()
     return puntajes
 
+import puntajes_csv
 valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
-guardar_puntajes("puntajes.csv", valores)
+puntajes_csv.guardar_puntajes("puntajes.csv", valores)
 recuperado = recuperar_puntajes("puntajes.csv")
 print (recuperado)
